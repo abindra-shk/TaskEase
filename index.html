@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Ease</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat&family=Karla:ital,wght@0,200;1,300&family=Manrope&family=Nunito:ital,wght@1,200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body class="box-border w-screen h-screen" >
+    <section class="w-full h-full bg-gradient-to-b from-blue-300 to-blue-700  ">
+        <button id="open-form-btn" class="m-5 py-2.5 px-5 bg-blue-500 text-white border-none rounded cursor-pointer hover:bg-blue-600 ease-in duration-100">Add Task</button>
+
+      <div class="overlay" id="overlay">
+        <div class="form-area">
+          <div class="add-task-form">
+            <h1>Add Task Form</h1>
+            <div class="input-wrapper">
+              <label>Title</label>
+              <div><input type="text" name="title" /></div>
+            </div>
+            <div class="input-wrapper">
+              <label>Description</label>
+              <div><input type="text" name="description" /></div>
+            </div>
+            <div class="input-wrapper">
+              <label>Status</label>
+              <div>
+                <select name="status">
+                  <option value="Todo">To do</option>
+                  <option value="InProgress">In Progress</option>
+                  <option value="Done">Done</option>
+                </select>
+              </div>
+            </div>
+            <button onclick="addTask()">Add Task</button>
+            <button id="close-form-btn">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-area">
+        <h1>Tasks</h1>
+        <div class="tasks-list"></div>
+      </div>
+    </section>
+  </body>
+</html>
