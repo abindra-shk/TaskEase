@@ -22,17 +22,32 @@ document.addEventListener("DOMContentLoaded", () => {
   updateStatusColor(defaultStatus);
 
   function updateStatusColor(selectedStatus) {
-    const statusOptions = document.querySelectorAll(".status-option");
+    const statusOptions = document.querySelectorAll(".status-options label");
     statusOptions.forEach((option) => {
-      option.classList.remove("bg-red-300", "bg-yellow-300", "bg-green-300");
+      option.classList.remove("bg-red-300", "bg-yellow-300", "bg-green-300", "selected");
     });
-    selectedStatus.nextElementSibling.classList.add("selected");
+
+    let selectedLabel;
+    switch (selectedStatus.value) {
+      case "Todo":
+        selectedLabel = document.querySelector("label[for='status-todo']");
+        selectedLabel.classList.add("bg-red-300", "selected");
+        break;
+      case "InProgress":
+        selectedLabel = document.querySelector("label[for='status-inprogress']");
+        selectedLabel.classList.add("bg-yellow-300", "selected");
+        break;
+      case "Done":
+        selectedLabel = document.querySelector("label[for='status-done']");
+        selectedLabel.classList.add("bg-green-300", "selected");
+        break;
+    }
   }
 
-  const statusOptions = document.querySelectorAll(".status-option");
-  statusOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-      updateStatusColor(option.previousElementSibling);
+  const statusInputs = document.querySelectorAll(".status-options input[type='radio']");
+  statusInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      updateStatusColor(input);
     });
   });
 });
