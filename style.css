@@ -2,16 +2,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-} */
-
 button {
   margin-top: 10px;
 }
@@ -45,11 +35,11 @@ button {
   background-color: #5cb85c;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   display: none;
 }
 
-input[type='radio']:checked + .status-option {
+input[type="radio"]:checked + .status-option {
   box-shadow: none;
 }
 
@@ -78,4 +68,8 @@ input[type='radio']:checked + .status-option {
 
 .task .hover\:text-gray-700:hover {
   color: #374151;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 28;
 }

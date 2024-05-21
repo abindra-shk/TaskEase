@@ -50,6 +50,28 @@ document.addEventListener("DOMContentLoaded", () => {
       updateStatusColor(input);
     });
   });
+
+  // Add event listeners to open form buttons for each column
+  const openTodoFormBtn = document.getElementById("open-todo-form");
+  openTodoFormBtn.addEventListener("click", () => {
+    overlay.classList.remove("hidden");
+    document.getElementById("status-todo").checked = true;
+    updateStatusColor(document.getElementById("status-todo"));
+  });
+
+  const openInProgressFormBtn = document.getElementById("open-inprogress-form");
+  openInProgressFormBtn.addEventListener("click", () => {
+    overlay.classList.remove("hidden");
+    document.getElementById("status-inprogress").checked = true;
+    updateStatusColor(document.getElementById("status-inprogress"));
+  });
+
+  const openDoneFormBtn = document.getElementById("open-done-form");
+  openDoneFormBtn.addEventListener("click", () => {
+    overlay.classList.remove("hidden");
+    document.getElementById("status-done").checked = true;
+    updateStatusColor(document.getElementById("status-done"));
+  });
 });
 
 function addTask() {
@@ -85,6 +107,7 @@ function addTask() {
     }
   });
 
+  // Append the task to the appropriate task list based on status
   if (status === 'Todo') {
     document.getElementById('todo-list').appendChild(task);
   } else if (status === 'InProgress') {
@@ -93,9 +116,8 @@ function addTask() {
     document.getElementById('done-list').appendChild(task);
   }
 
+  // Hide the form and reset input fields after adding the task
   document.querySelector('.overlay').classList.add('hidden');
   document.getElementById('task-title').value = '';
   document.getElementById('task-description').value = '';
 }
-
-
