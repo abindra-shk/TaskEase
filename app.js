@@ -57,14 +57,45 @@ function addTask() {
   const description = document.getElementById("task-description").value;
   const status = document.querySelector('input[name="status"]:checked').value;
 
-  const task = `<div class="task bg-white rounded p-2 mb-2 shadow">${title}<br>${description}</div>`;
+  const task = document.createElement('div');
+  task.classList.add('task', 'bg-white', 'rounded', 'p-4', 'mb-2', 'shadow', 'relative', 'cursor-pointer');
 
-  if (status === "Todo") {
-    document.getElementById("todo-list").innerHTML += task;
-  } else if (status === "InProgress") {
-    document.getElementById("inprogress-list").innerHTML += task;
-  } else if (status === "Done") {
-    document.getElementById("done-list").innerHTML += task;
+  const taskTitle = document.createElement('div');
+  taskTitle.classList.add('font-bold', 'text-lg');
+  taskTitle.textContent = title;
+
+  const taskDescription = document.createElement('div');
+  taskDescription.classList.add('text-gray-600', 'overflow-hidden', 'line-clamp-4');
+  taskDescription.textContent = description;
+
+  task.appendChild(taskTitle);
+  task.appendChild(taskDescription);
+
+  // Add edit icon
+  const editIcon = document.createElement('span');
+  editIcon.classList.add('absolute', 'top-2', 'right-2', 'text-gray-500', 'hover:text-gray-700', 'cursor-pointer');
+  editIcon.innerHTML = '&#9998;'; // Unicode pencil icon
+  task.appendChild(editIcon);
+
+  task.addEventListener('click', () => {
+    if (taskDescription.classList.contains('line-clamp-4')) {
+      taskDescription.classList.remove('line-clamp-4');
+    } else {
+      taskDescription.classList.add('line-clamp-4');
+    }
+  });
+
+  if (status === 'Todo') {
+    document.getElementById('todo-list').appendChild(task);
+  } else if (status === 'InProgress') {
+    document.getElementById('inprogress-list').appendChild(task);
+  } else if (status === 'Done') {
+    document.getElementById('done-list').appendChild(task);
   }
-  document.querySelector(".overlay").classList.add("hidden");
+
+  document.querySelector('.overlay').classList.add('hidden');
+  document.getElementById('task-title').value = '';
+  document.getElementById('task-description').value = '';
 }
+
+
