@@ -13,7 +13,7 @@
     <script src="app.js" defer></script>
   </head>
   <body class="box-border w-screen h-screen">
-    <section class="w-full h-full bg-gradient-to-b from-blue-300 to-blue-700">
+    <section class="w-full h-full bg-gradient-to-b from-blue-300 to-white-700">
       <button
         id="open-form-btn"
         class="m-5 py-2.5 px-5 bg-blue-500 text-white border-none rounded cursor-pointer hover:bg-blue-600 ease-in duration-100"
@@ -23,11 +23,10 @@
       <div
         class="overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center"
       >
-        <div class="form-area w-3/12 bg-white p-8 rounded-lg">
+        <div class="form-area w-1/3 bg-white p-8 rounded-lg">
           <div class="add-task-form">
             <h1 class="text-lg font-bold mb-4">Add Task Form</h1>
             <div class="input-wrapper mb-4">
-              <!-- <label class="block mb-1 text-gray-400">Title</label> -->
               <input
                 type="text"
                 name="title"
@@ -56,7 +55,7 @@
                 />
                 <label
                   for="status-todo"
-                  class="status-option-todo bg-gray-300 hover:bg-red-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-300"
+                  class="status-option-todo bg-gray-300 hover:bg-red-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
                   >To do</label
                 >
                 <input
@@ -67,7 +66,7 @@
                 />
                 <label
                   for="status-inprogress"
-                  class="status-option-inprogress bg-gray-300 hover:bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-300"
+                  class="status-option-inprogress bg-gray-300 hover:bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
                   >In Progress</label
                 >
 
@@ -79,7 +78,7 @@
                 />
                 <label
                   for="status-done"
-                  class="status-option-done bg-gray-300 hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-300"
+                  class="status-option-done bg-gray-300 hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
                   >Done</label
                 >
               </div>
@@ -100,18 +99,18 @@
         </div>
       </div>
 
-      <div class="task-area flex justify-between w-4/5 mt-8">
-        <div class="task-column bg-gray-200 p-4 rounded">
-          <h1 class="text-lg font-bold mb-4">Todo</h1>
-          <div id="todo-list" class="tasks-list"></div>
+      <div class="task-area flex px-20 w-full mt-8 items-start">
+        <div class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg">
+          <h1 class="text-lg font-bold mb-4 text-center">Todo</h1>
+          <div id="todo-list" class="tasks-list flex flex-col"></div>
         </div>
-        <div class="task-column bg-gray-200 p-4 rounded mx-4">
-          <h1 class="text-lg font-bold mb-4">In Progress</h1>
-          <div id="inprogress-list" class="tasks-list"></div>
+        <div class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg">
+          <h1 class="text-lg font-bold mb-4 text-center">In Progress</h1>
+          <div id="inprogress-list" class="tasks-list flex flex-col"></div>
         </div>
-        <div class="task-column bg-gray-200 p-4 rounded">
-          <h1 class="text-lg font-bold mb-4">Done</h1>
-          <div id="done-list" class="tasks-list"></div>
+        <div class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg">
+          <h1 class="text-lg font-bold mb-4 text-center">Done</h1>
+          <div id="done-list" class="tasks-list flex flex-col"></div>
         </div>
       </div>
     </section>

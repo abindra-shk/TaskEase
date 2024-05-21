@@ -57,7 +57,7 @@ function addTask() {
   const description = document.getElementById("task-description").value;
   const status = document.querySelector('input[name="status"]:checked').value;
 
-  const task = `<div class="task bg-white rounded p-2 mb-2">${title}<br>${description}</div>`;
+  const task = `<div class="task bg-white rounded p-2 mb-2 shadow">${title}<br>${description}</div>`;
 
   if (status === "Todo") {
     document.getElementById("todo-list").innerHTML += task;
