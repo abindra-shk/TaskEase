@@ -16,38 +16,85 @@
     <section class="w-full h-full bg-gradient-to-b from-blue-300 to-blue-700  ">
         <button id="open-form-btn" class="m-5 py-2.5 px-5 bg-blue-500 text-white border-none rounded cursor-pointer hover:bg-blue-600 ease-in duration-100">Add Task</button>
 
-      <div class="overlay" id="overlay">
+      <!-- <div class="overlay" id="overlay">
         <div class="form-area">
-          <div class="add-task-form">
-            <h1>Add Task Form</h1>
-            <div class="input-wrapper">
-              <label>Title</label>
-              <div><input type="text" name="title" /></div>
+            <div class="add-task-form">
+                <h1>Add Task Form</h1>
+                <div class="input-wrapper">
+                    <label>Title</label>
+                    <div><input type="text" name="title" id="task-title" /></div>
+                </div>
+                <div class="input-wrapper">
+                    <label>Description</label>
+                    <div><input type="text" name="description" id="task-description" /></div>
+                </div>
+                <div class="input-wrapper">
+                    <label>Status</label>
+                    <div class="status-options">
+                        <input type="radio" name="status" id="status-todo" value="Todo" checked>
+                        <label for="status-todo" class="status-option todo">To do</label>
+                        
+                        <input type="radio" name="status" id="status-inprogress" value="InProgress">
+                        <label for="status-inprogress" class="status-option inprogress">In Progress</label>
+                        
+                        <input type="radio" name="status" id="status-done" value="Done">
+                        <label for="status-done" class="status-option done">Done</label>
+                    </div>
+                </div>
+                <button onclick="addTask()">Add Task</button>
+                <button id="close-form-btn">Close</button>
             </div>
-            <div class="input-wrapper">
-              <label>Description</label>
-              <div><input type="text" name="description" /></div>
-            </div>
-            <div class="input-wrapper">
-              <label>Status</label>
-              <div>
-                <select name="status">
-                  <option value="Todo">To do</option>
-                  <option value="InProgress">In Progress</option>
-                  <option value="Done">Done</option>
-                </select>
-              </div>
-            </div>
-            <button onclick="addTask()">Add Task</button>
-            <button id="close-form-btn">Close</button>
-          </div>
         </div>
-      </div>
+      </div> -->
+      <div class="overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="form-area bg-white p-8 rounded-lg">
+            <div class="add-task-form">
+                <h1 class="text-lg font-bold mb-4">Add Task Form</h1>
+                <div class="input-wrapper mb-4">
+                    <label class="block mb-1">Title</label>
+                    <input type="text" name="title" id="task-title" class="w-full border-gray-300 rounded">
+                </div>
+                <div class="input-wrapper mb-4">
+                    <label class="block mb-1">Description</label>
+                    <input type="text" name="description" id="task-description" class="w-full border-gray-300 rounded">
+                </div>
+                <div class="input-wrapper mb-4">
+                    <label class="block mb-1">Status</label>
+                    <div class="status-options flex flex-col space-y-2">
+                        <input type="radio" name="status" id="status-todo" value="Todo" checked>
+                        <label for="status-todo" class="status-option-todo bg-gray-300 hover:bg-red-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-300">To do</label>
+                        
+                        <input type="radio" name="status" id="status-inprogress" value="InProgress">
+                        <label for="status-inprogress" class="status-option-inprogress bg-gray-300 hover:bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-300">In Progress</label>
+                        
+                        <input type="radio" name="status" id="status-done" value="Done">
+                        <label for="status-done" class="status-option-done bg-gray-300 hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-300">Done</label>
+                    </div>
+                </div>
+                <button onclick="addTask()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Add Task
+                </button>
+                <button id="close-form-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-4">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 
-      <div class="task-area">
-        <h1>Tasks</h1>
-        <div class="tasks-list"></div>
-      </div>
+    <div class="task-area flex justify-between w-4/5 mt-8">
+        <div class="task-column bg-gray-200 p-4 rounded">
+            <h1 class="text-lg font-bold mb-4">Todo</h1>
+            <div id="todo-list" class="tasks-list"></div>
+        </div>
+        <div class="task-column bg-gray-200 p-4 rounded mx-4">
+            <h1 class="text-lg font-bold mb-4">In Progress</h1>
+            <div id="inprogress-list" class="tasks-list"></div>
+        </div>
+        <div class="task-column bg-gray-200 p-4 rounded">
+            <h1 class="text-lg font-bold mb-4">Done</h1>
+            <div id="done-list" class="tasks-list"></div>
+        </div>
+    </div>
     </section>
   </body>
 </html>
