@@ -62,14 +62,22 @@ input[type="radio"]:checked + .status-option {
   right: 0.5rem;
 }
 
-.task .text-gray-500 {
-  color: #6b7280;
+.task .right-10 {
+  right: 2.5rem;
 }
 
-.task .hover\:text-gray-700:hover {
-  color: #374151;
+.task .text-gray-500 {
+color: #6b7280;
+}
+
+.task .hover:text-gray-700:hover {
+color: #374151;
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 28;
+font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 28;
+}
+
+.task {
+transition: max-height 0.3s ease;
 }
