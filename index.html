@@ -1,72 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task Ease</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat&family=Karla:ital,wght@0,200;1,300&family=Manrope&family=Nunito:ital,wght@1,200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="app.js" defer></script>
-</head>
-<body class="box-border w-screen h-screen">
-  <section class="w-full h-full bg-gradient-to-b from-blue-300 to-white-700 relative">
-    <button id="open-form-btn" class="m-5 py-2.5 px-5 bg-blue-500 text-white border-none rounded cursor-pointer hover:bg-blue-600 ease-in duration-100">
-      Add Task
-    </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Ease</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat&family=Karla:ital,wght@0,200;1,300&family=Manrope&family=Nunito:ital,wght@1,200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body class="box-border w-screen h-screen">
+    <section
+      class="w-full h-full bg-gradient-to-b from-blue-300 to-white-700 relative"
+    >
+      <button
+        id="open-form-btn"
+        class="m-5 py-2.5 px-5 bg-blue-500 text-white border-none rounded cursor-pointer hover:bg-blue-600 ease-in duration-100"
+      >
+        Add Task
+      </button>
 
-    <div class="overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="form-area w-1/3 bg-white p-8 rounded-lg">
-        <div class="add-task-form">
-          <h1 id="form-heading" class="text-lg font-bold mb-4">Add Task Form</h1>
+      <div
+        class="overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50"
+      >
+        <div class="form-area w-1/3 bg-white p-8 rounded-lg">
+          <div class="add-task-form">
+            <h1 id="form-heading" class="text-lg font-bold mb-4">
+              Add Task Form
+            </h1>
 
-          <div class="input-wrapper mb-4">
-            <input type="text" name="title" id="task-title" class="w-full py-3 px-5 my-2 border border-gray-300 rounded" placeholder="Title" />
-          </div>
-          <div class="input-wrapper mb-4">
-            <textarea name="description" id="task-description" class="w-full py-3 px-5 my-2 border border-gray-300 rounded h-32 resize-none" placeholder="Description..."></textarea>
-          </div>
-          <div class="input-wrapper mb-4">
-            <label class="block mb-1">Status</label>
-            <div class="status-options flex flex-col space-y-2">
-              <input type="radio" name="status" id="status-todo" value="Todo" checked />
-              <label for="status-todo" class="status-option-todo bg-gray-300 hover:bg-red-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75">To do</label>
-              <input type="radio" name="status" id="status-inprogress" value="InProgress" />
-              <label for="status-inprogress" class="status-option-inprogress bg-gray-300 hover:bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75">In Progress</label>
-              <input type="radio" name="status" id="status-done" value="Done" />
-              <label for="status-done" class="status-option-done bg-gray-300 hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75">Done</label>
+            <div class="input-wrapper mb-4">
+              <input
+                type="text"
+                name="title"
+                id="task-title"
+                class="w-full py-3 px-5 my-2 border border-gray-300 rounded"
+                placeholder="Title"
+              />
             </div>
+            <div class="input-wrapper mb-4">
+              <textarea
+                name="description"
+                id="task-description"
+                class="w-full py-3 px-5 my-2 border border-gray-300 rounded h-32 resize-none"
+                placeholder="Description..."
+              ></textarea>
+            </div>
+            <div class="input-wrapper mb-4">
+              <label class="block mb-1">Status</label>
+              <div class="status-options flex flex-col space-y-2">
+                <input
+                  type="radio"
+                  name="status"
+                  id="status-todo"
+                  value="Todo"
+                  checked
+                />
+                <label
+                  for="status-todo"
+                  class="status-option-todo bg-gray-300 hover:bg-red-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
+                  >To do</label
+                >
+                <input
+                  type="radio"
+                  name="status"
+                  id="status-inprogress"
+                  value="InProgress"
+                />
+                <label
+                  for="status-inprogress"
+                  class="status-option-inprogress bg-gray-300 hover:bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
+                  >In Progress</label
+                >
+                <input
+                  type="radio"
+                  name="status"
+                  id="status-done"
+                  value="Done"
+                />
+                <label
+                  for="status-done"
+                  class="status-option-done bg-gray-300 hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
+                  >Done</label
+                >
+              </div>
+            </div>
+            <button
+              id="form-button"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              onclick="addTask()"
+            >
+              Add Task
+            </button>
+            <button
+              id="close-form-btn"
+              class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-4"
+            >
+              Close
+            </button>
           </div>
-          <button id="form-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="addTask()">Add Task</button>
-          <button id="close-form-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-4">Close</button>
         </div>
       </div>
-    </div>
 
-    <div class="task-area flex px-20 w-full mt-8 items-start relative z-10">
-      <div class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg">
-        <div class="flex justify-between items-center mb-4">
-          <h1 class="text-lg font-bold text-center">Todo</h1>
-          <button id="open-todo-form" class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl">add_circle</button>
+      <div class="task-area flex px-20 w-full mt-8 items-start relative z-10">
+        <div
+          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h1 class="text-lg font-bold text-center">Todo</h1>
+            <button
+              id="open-todo-form"
+              class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl"
+            >
+              add_circle
+            </button>
+          </div>
+          <div
+            id="todo-list"
+            class="tasks-list flex flex-col"
+            ondragover="allowDrop(event)"
+            ondrop="drop(event, 'Todo')"
+          ></div>
         </div>
-        <div id="todo-list" class="tasks-list flex flex-col"></div>
-      </div>
-      <div class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg">
-        <div class="flex justify-between items-center mb-4">
-          <h1 class="text-lg font-bold text-center">In Progress</h1>
-          <button id="open-inprogress-form" class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl">add_circle</button>
+        <div
+          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h1 class="text-lg font-bold text-center">In Progress</h1>
+            <button
+              id="open-inprogress-form"
+              class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl"
+            >
+              add_circle
+            </button>
+          </div>
+          <div
+            id="inprogress-list"
+            class="tasks-list flex flex-col"
+            ondragover="allowDrop(event)"
+            ondrop="drop(event, 'InProgress')"
+          ></div>
         </div>
-        <div id="inprogress-list" class="tasks-list flex flex-col"></div>
-      </div>
-      <div class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg">
-        <div class="flex justify-between items-center mb-4">
-          <h1 class="text-lg font-bold text-center">Done</h1>
-          <button id="open-done-form" class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl">add_circle</button>
+        <div
+          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h1 class="text-lg font-bold text-center">Done</h1>
+            <button
+              id="open-done-form"
+              class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl"
+            >
+              add_circle
+            </button>
+          </div>
+          <div
+            id="done-list"
+            class="tasks-list flex flex-col"
+            ondragover="allowDrop(event)"
+            ondrop="drop(event, 'Done')"
+            ondragover="allowDrop(event)"
+            ondrop="drop(event, 'Done')"
+          ></div>
         </div>
-        <div id="done-list" class="tasks-list flex flex-col"></div>
       </div>
-    </div>
-  </section>
-</body>
+    </section>
+  </body>
 </html>

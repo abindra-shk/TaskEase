@@ -12,14 +12,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const formButtons = {
     "open-todo-form": "Todo",
     "open-inprogress-form": "InProgress",
-    "open-done-form": "Done"
+    "open-done-form": "Done",
   };
 
   for (const btnId in formButtons) {
     document.getElementById(btnId).addEventListener("click", () => {
       overlay.classList.remove("hidden");
-      document.getElementById(`status-${formButtons[btnId].toLowerCase()}`).checked = true;
-      updateStatusColor(document.getElementById(`status-${formButtons[btnId].toLowerCase()}`));
+      document.getElementById(
+        `status-${formButtons[btnId].toLowerCase()}`
+      ).checked = true;
+      updateStatusColor(
+        document.getElementById(`status-${formButtons[btnId].toLowerCase()}`)
+      );
       formButton.textContent = "Add Task";
       formHeading.textContent = "Add Task Form";
     });
@@ -51,7 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateStatusColor(selectedStatus) {
     const statusOptions = document.querySelectorAll(".status-options label");
     statusOptions.forEach((option) => {
-      option.classList.remove("bg-red-300", "bg-yellow-300", "bg-green-300", "selected");
+      option.classList.remove(
+        "bg-red-300",
+        "bg-yellow-300",
+        "bg-green-300",
+        "selected"
+      );
     });
 
     let selectedLabel;
@@ -61,7 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
         selectedLabel.classList.add("bg-red-300", "selected");
         break;
       case "InProgress":
-        selectedLabel = document.querySelector("label[for='status-inprogress']");
+        selectedLabel = document.querySelector(
+          "label[for='status-inprogress']"
+        );
         selectedLabel.classList.add("bg-yellow-300", "selected");
         break;
       case "Done":
@@ -94,21 +105,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createTask(title, description, status) {
     const task = document.createElement("div");
-    task.classList.add("task", "bg-white", "rounded", "p-4", "mb-2", "shadow", "relative", "cursor-pointer");
+    task.classList.add(
+      "task",
+      "bg-white",
+      "rounded",
+      "p-4",
+      "mb-2",
+      "shadow",
+      "relative",
+      "cursor-pointer"
+    );
 
     const taskTitle = document.createElement("div");
     taskTitle.classList.add("font-bold", "text-lg", "mt-4");
     taskTitle.textContent = title;
 
     const taskDescription = document.createElement("div");
-    taskDescription.classList.add("text-gray-600", "overflow-hidden", "line-clamp-4");
+    taskDescription.classList.add(
+      "text-gray-600",
+      "overflow-hidden",
+      "line-clamp-4"
+    );
     taskDescription.textContent = description;
 
     task.appendChild(taskTitle);
     task.appendChild(taskDescription);
 
     const editIcon = document.createElement("span");
-    editIcon.classList.add("material-symbols-outlined", "absolute", "top-2", "right-10", "text-gray-500", "hover:text-gray-700", "cursor-pointer");
+    editIcon.classList.add(
+      "material-symbols-outlined",
+      "absolute",
+      "top-2",
+      "right-10",
+      "text-gray-500",
+      "hover:text-gray-700",
+      "cursor-pointer"
+    );
     editIcon.textContent = "edit";
     editIcon.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -116,7 +148,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const deleteIcon = document.createElement("span");
-    deleteIcon.classList.add("material-symbols-outlined", "absolute", "top-2", "right-2", "text-red-500", "hover:text-red-700", "cursor-pointer");
+    deleteIcon.classList.add(
+      "material-symbols-outlined",
+      "absolute",
+      "top-2",
+      "right-2",
+      "text-red-500",
+      "hover:text-red-700",
+      "cursor-pointer"
+    );
     deleteIcon.textContent = "delete";
     deleteIcon.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -150,8 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
     currentEditingTask = task;
     taskTitleInput.value = task.dataset.title;
     taskDescriptionInput.value = task.dataset.description;
-    document.querySelector(`input[value="${task.dataset.status}"]`).checked = true;
-    updateStatusColor(document.querySelector(`input[value="${task.dataset.status}"]`));
+    document.querySelector(
+      `input[value="${task.dataset.status}"]`
+    ).checked = true;
+    updateStatusColor(
+      document.querySelector(`input[value="${task.dataset.status}"]`)
+    );
     overlay.classList.remove("hidden");
     formButton.textContent = "Update Task";
     formHeading.textContent = "Update Task Form";
@@ -168,7 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentList = task.parentElement;
     if (status === "Todo" && currentList.id !== "todo-list") {
       document.getElementById("todo-list").appendChild(task);
-    } else if (status === "InProgress" && currentList.id !== "inprogress-list") {
+    } else if (
+      status === "InProgress" &&
+      currentList.id !== "inprogress-list"
+    ) {
       document.getElementById("inprogress-list").appendChild(task);
     } else if (status === "Done" && currentList.id !== "done-list") {
       document.getElementById("done-list").appendChild(task);
@@ -191,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tasks.push({
         title: task.dataset.title,
         description: task.dataset.description,
-        status: task.dataset.status
+        status: task.dataset.status,
       });
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -205,4 +252,36 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadTasksFromLocalStorage();
+
+  // Drag and Drop Functionality
+
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function drag(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+  }
+
+  function drop(event, status) {
+    event.preventDefault();
+    const taskId = event.dataTransfer.getData("text/plain");
+    const task = document.getElementById(taskId);
+    const currentStatus = task.dataset.status;
+
+    // Check if the task is being moved to a different status column
+    if (currentStatus !== status) {
+      // Remove the task from its current column
+      task.remove();
+
+      // Append the task to the new column
+      document.getElementById(`${status.toLowerCase()}-list`).appendChild(task);
+
+      // Update the task status
+      task.dataset.status = status;
+
+      // Save the changes to local storage
+      saveTasksToLocalStorage();
+    }
+  }
 });
