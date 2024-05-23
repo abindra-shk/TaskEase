@@ -19,7 +19,7 @@
     <div class="overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="form-area w-1/3 bg-white p-8 rounded-lg">
         <div class="add-task-form">
-          <h1 class="text-lg font-bold mb-4">Add Task Form</h1>
+          <h1 id="form-heading" class="text-lg font-bold mb-4">Add Task Form</h1>
 
           <div class="input-wrapper mb-4">
             <input type="text" name="title" id="task-title" class="w-full py-3 px-5 my-2 border border-gray-300 rounded" placeholder="Title" />
@@ -38,7 +38,7 @@
               <label for="status-done" class="status-option-done bg-gray-300 hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75">Done</label>
             </div>
           </div>
-          <button onclick="addTask()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Add Task</button>
+          <button id="form-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="addTask()">Add Task</button>
           <button id="close-form-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-4">Close</button>
         </div>
       </div>
