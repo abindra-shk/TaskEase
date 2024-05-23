@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Ease</title>
+    <link rel="icon" href="assets/notepad-icon.png" type="image/x-icon">
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat&family=Karla:ital,wght@0,200;1,300&family=Manrope&family=Nunito:ital,wght@1,200&family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
       rel="stylesheet"
@@ -32,7 +33,9 @@
           src="assets/taskease-high-resolution-logo-transparent.png"
         />
         <div class="flex items-center">
-          <span class="material-symbols-outlined"> search </span>
+          <span class="material-symbols-outlined text-gray-800 text-3xl">
+            search
+          </span>
           <input
             type="text"
             id="search-input"
@@ -69,7 +72,7 @@
               ></textarea>
             </div>
             <div class="input-wrapper mb-4">
-              <label class="block mb-1">Status</label>
+              <!-- <label class="block mb-1">Status</label> -->
               <div class="status-options flex flex-col space-y-2">
                 <input
                   type="radio"
@@ -80,7 +83,7 @@
                 />
                 <label
                   for="status-todo"
-                  class="status-option-todo bg-gray-300 hover:bg-red-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
+                  class="status-option-todo bg-white hover:bg-red-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75 drop-shadow-lg"
                   >To do</label
                 >
                 <input
@@ -91,7 +94,7 @@
                 />
                 <label
                   for="status-inprogress"
-                  class="status-option-inprogress bg-gray-300 hover:bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
+                  class="status-option-inprogress bg-white hover:bg-yellow-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75 drop-shadow-lg"
                   >In Progress</label
                 >
                 <input
@@ -102,7 +105,7 @@
                 />
                 <label
                   for="status-done"
-                  class="status-option-done bg-gray-300 hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75"
+                  class="status-option-done bg-white hover:bg-green-300 text-gray-800 font-semibold px-4 py-2 rounded transition duration-75 drop-shadow-lg"
                   >Done</label
                 >
               </div>
@@ -130,7 +133,14 @@
           id="todo-column"
         >
           <div class="flex justify-between items-center mb-4">
-            <h1 class="text-lg font-bold text-center">Todo</h1>
+            <h1 class="text-lg font-bold text-center">
+              Todo
+              <span
+                id="todo-count"
+                class="bg-white bg-opacity-80 py-1 px-2 rounded-full text-center ml-2"
+                >0</span
+              >
+            </h1>
             <button
               id="open-todo-form"
               class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl"
@@ -145,7 +155,14 @@
           id="inprogress-column"
         >
           <div class="flex justify-between items-center mb-4">
-            <h1 class="text-lg font-bold text-center">In Progress</h1>
+            <h1 class="text-lg font-bold text-center">
+              In Progress
+              <span
+                id="inprogress-count"
+                class="bg-white bg-opacity-80 py-1 px-2 rounded-full text-center ml-2"
+                >0</span
+              >
+            </h1>
             <button
               id="open-inprogress-form"
               class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl"
@@ -160,7 +177,14 @@
           id="done-column"
         >
           <div class="flex justify-between items-center mb-4">
-            <h1 class="text-lg font-bold text-center">Done</h1>
+            <h1 class="text-lg font-bold text-center">
+              Done
+              <span
+                id="done-count"
+                class="bg-white bg-opacity-80 py-1 px-2 rounded-full text-center ml-2"
+                >0</span
+              >
+            </h1>
             <button
               id="open-done-form"
               class="material-symbols-outlined text-green-500 hover:text-green-600 text-center text-3xl"
