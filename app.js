@@ -141,6 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
     task.dataset.title = title;
     task.dataset.description = description;
     task.dataset.status = status;
+
+    saveTasksToLocalStorage();
   }
 
   function editTask(task, title, description, status) {
@@ -171,12 +173,36 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (status === "Done" && currentList.id !== "done-list") {
       document.getElementById("done-list").appendChild(task);
     }
+
+    saveTasksToLocalStorage();
   }
 
   function deleteTask(task) {
     const confirmDelete = confirm("Do you really want to delete this task?");
     if (confirmDelete) {
       task.remove();
+      saveTasksToLocalStorage();
     }
   }
+
+  function saveTasksToLocalStorage() {
+    const tasks = [];
+    document.querySelectorAll(".task").forEach((task) => {
+      tasks.push({
+        title: task.dataset.title,
+        description: task.dataset.description,
+        status: task.dataset.status
+      });
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  function loadTasksFromLocalStorage() {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach((task) => {
+      createTask(task.title, task.description, task.status);
+    });
+  }
+
+  loadTasksFromLocalStorage();
 });
