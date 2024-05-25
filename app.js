@@ -358,6 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function dragEnd(event) {
     event.target.classList.remove("hide");
+    updateTaskCount();
   }
 
   function updateTaskStatus(task, newStatus) {

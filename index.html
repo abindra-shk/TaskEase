@@ -49,7 +49,7 @@
         class="overlay hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50"
       >
         <div class="form-area w-1/3 bg-white p-8 rounded-lg">
-          <div class="add-task-form">
+          <div class="add-task-form flex flex-col">
             <h1 id="form-heading" class="text-lg font-bold mb-4">
               Add Task Form
             </h1>
@@ -72,7 +72,6 @@
               ></textarea>
             </div>
             <div class="input-wrapper mb-4">
-              <!-- <label class="block mb-1">Status</label> -->
               <div class="status-options flex flex-col space-y-2">
                 <input
                   type="radio"
@@ -110,7 +109,8 @@
                 >
               </div>
             </div>
-            <button
+            <div class="flex">
+              <button
               id="form-button"
               class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
               onclick="addTask()"
@@ -119,17 +119,18 @@
             </button>
             <button
               id="close-form-btn"
-              class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-4"
+              class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 sm:px-2 md:px-4 rounded ml-4"
             >
               Close
             </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="task-area flex px-20 w-full mt-12 items-start relative z-10">
+      <div class="task-area px-2  flex sm:px-10 md:px-20 w-full mt-12 items-start relative z-10">
         <div
-          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg"
+          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 sm:mx-5 md:mx-10 p-2 rounded-lg"
           id="todo-column"
         >
           <div class="flex justify-between items-center mb-4">
@@ -151,7 +152,7 @@
           <div id="todo-list" class="tasks-list flex flex-col"></div>
         </div>
         <div
-          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg"
+          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 sm:mx-5 md:mx-10 p-2 rounded-lg"
           id="inprogress-column"
         >
           <div class="flex justify-between items-center mb-4">
@@ -173,7 +174,7 @@
           <div id="inprogress-list" class="tasks-list flex flex-col"></div>
         </div>
         <div
-          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 mx-10 p-2 rounded-lg"
+          class="task-column w-1/3 flex flex-col bg-gray-100 bg-opacity-50 sm:mx-5 md:mx-10 p-2 rounded-lg"
           id="done-column"
         >
           <div class="flex justify-between items-center mb-4">
